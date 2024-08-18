@@ -26,6 +26,7 @@ const userSchema=new mongoose.Schema({
     login:{
         type:String,
         require:[true,"Please provide a login"],
+        unique:true,
     },
     password:{
         type:String,
