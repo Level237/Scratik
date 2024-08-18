@@ -42,5 +42,13 @@ const CampaignSchema=new mongoose.Schema({
     ticketNumber:{
         type:Number,
         require:[true,"Please provide a ticket"]
+    },
+    campaignQuarter:{
+        type:String,
+        require:[true,"Please provide a quarter"]
     }
 })
+
+const Campaign=mongoose.models.campaign || mongoose.model('campaigns',CampaignSchema)
+
+export default Campaign;
