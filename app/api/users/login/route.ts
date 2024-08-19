@@ -20,8 +20,10 @@ export async function POST(request:NextRequest){
             return NextResponse.json({error:"User does not exist"},{status:400})
         }
 
-        const validatePassword=bcryptjs.compare(password,user.password)
-
+        const validatedPassword=bcryptjs.compare(password,user.password)
+        if(!validatedPassword){
+            return NextResponse.json({error:"Invalid password"},{status:400})
+        }
         const tokenData={
             id:user._id,
             login:user.login,
