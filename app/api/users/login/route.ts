@@ -1,5 +1,5 @@
 import { connect } from "@/db/connect";
-import User from "@/models/userModels";
+import User from "@/models/userModel";
 import { NextRequest,NextResponse } from "next/server"
 
 // @ts-ignore
