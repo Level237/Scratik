@@ -31,7 +31,7 @@ export async  function POST(request:NextRequest){
 
        
 
-        return NextResponse.json({message:"User created successfully",
+        return NextResponse.json({message:"Winning created successfully",
         success:true,
         savedWinning})
 

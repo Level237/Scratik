@@ -1,8 +1,7 @@
 import {connect} from "@/db/connect"
-import User from "@/models/userModel"
+import Campaign from "@/models/campaignModel"
 import { NextRequest,NextResponse } from "next/server"
-// @ts-ignore
-import bcryptjs from 'bcryptjs';
+
 
 
 
@@ -12,39 +11,39 @@ export async  function POST(request:NextRequest){
 
     try {
         const reqBody=await request.json();
-        const {username,email,password,quarter,address,phone,login,role}=reqBody
+        const {campaignName,
+            campaignLots,
+            campaignQuantity,
+            winningPrice,
+            user,
+            campaignTown,
+            campaignPeriod,
+            campaignQuarter
+        }=reqBody
 
         console.log(reqBody)
 
-        //check if user already exist
-        const user=await User.findOne({email})
-
-        if(user){
-            return NextResponse.json({error:"User already exist"},{status:400})
-        }
+       
 
         //Hash password
-        const salt=await bcryptjs.genSalt(10)
-        const hashedPassword=await bcryptjs.hash(password,salt)
+        
 
-        const newUser=new User({
-            username,
-            email,
-            quarter,
-            address,
-            phone,
-            login,
-            role,
-            password:hashedPassword
+        const newCampaign=new Campaign({
+            campaignName,
+            campaignLots,
+            campaignQuantity,
+            winningPrice,
+            user,
+            campaignTown,
+            campaignPeriod,
+            campaignQuarter
         })
 
-        const savedUser=await newUser.save()
+        const savedCampaign=await newCampaign.save()
 
-        console.log(savedUser)
-
-        return NextResponse.json({message:"User created successfully",
+        return NextResponse.json({message:"Campaign created successfully",
         success:true,
-        savedUser})
+        savedCampaign})
 
 
     } catch (error:any) {
