@@ -26,24 +26,33 @@ export default function Sidebar() {
     </Link>
  
  <Link href="/users" onClick={()=>setCurrentPage(2)}>
- <div className={`flex cursor-pointer ${currentPage === 2 ? "bg-[#57482959] py-2 px-4 rounded-sm" : "" } items-center gap-2`}>
+ <div 
+ className=
+ {`flex cursor-pointer ${currentPage === 2 ? "bg-[#57482959] py-2 px-4 rounded-sm" : "" } 
+ items-center gap-2`}>
       <div>
       <User className={`${currentPage===2 ? "text-[#BE7E00]" : "text-white"}`} />
       </div>
       <div>
-          <h3 className={`${currentPage===2 ? "text-[#BE7E00]" : "text-white"}`}>Utilisateurs</h3>
+          <h3 
+          className={`${currentPage===2 ? "text-[#BE7E00]" : "text-white"}`}>Utilisateurs</h3>
       </div>
   </div>
  </Link>
  
-  <div className='flex cursor-pointer items-center gap-2'>
+ <Link  href="/sales" onClick={()=>setCurrentPage(3)}>
+ <div className=
+ {`flex cursor-pointer ${currentPage === 3 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
+ items-center gap-2`}>
       <div>
-      <MapPin className='text-white' />
+      <MapPin className={`${currentPage===3 ? "text-[#BE7E00]" : "text-white"}`} />
       </div>
       <div>
-          <h3 className='text-white text-md'>Point de ventes</h3>
+          <h3 className={`${currentPage===3 ? "text-[#BE7E00]" : "text-white"}`}>Point de ventes</h3>
       </div>
   </div>
+ </Link>
+ 
   <div className='flex cursor-pointer items-center gap-2'>
       <div>
       <Trophy className='text-white' />
