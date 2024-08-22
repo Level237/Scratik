@@ -1,4 +1,5 @@
 import DataTableDemo from '@/components/DataTable'
+import SaleTable from '@/components/tables/SaleTable'
 import UserTable from '@/components/tables/UserTable'
 import { Separator } from '@/components/ui/separator'
 import { Filter } from 'lucide-react'
@@ -39,7 +40,7 @@ export default function page() {
         </div>
         </div>
         <Separator className='bg-[#BE7E00] mt-5' />
-        <UserTable/>
+        <SaleTable/>
     </section>
     </section>
    
