@@ -1,4 +1,5 @@
 import DataTableDemo from '@/components/DataTable'
+import CampaignTable from '@/components/tables/CampaignTable'
 import UserTable from '@/components/tables/UserTable'
 import WinningTable from '@/components/tables/WinningTable'
 import { Separator } from '@/components/ui/separator'
@@ -40,7 +41,7 @@ export default function page() {
         </div>
         </div>
         <Separator className='bg-[#BE7E00] mt-5' />
-        <WinningTable/>
+        <CampaignTable/>
     </section>
     </section>
    
