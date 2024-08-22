@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grip, LayoutGrid, MapPin, Medal, Trophy, User } from 'lucide-react'
+import { Grip, LayoutGrid, LogOut, MapPin, Medal, Trophy, User } from 'lucide-react'
 import Image from 'next/image'
 export default function Sidebar() {
   return (
@@ -16,7 +16,7 @@ export default function Sidebar() {
           <h3 className='text-[#BE7E00] text-md'>Dashboard</h3>
       </div>
   </div>
-  <div className='flex items-center gap-2'>
+  <div className='flex cursor-pointer items-center gap-2'>
       <div>
       <User className='text-white' />
       </div>
@@ -24,7 +24,7 @@ export default function Sidebar() {
           <h3 className='text-white text-md'>Utilisateurs</h3>
       </div>
   </div>
-  <div className='flex items-center gap-2'>
+  <div className='flex cursor-pointer items-center gap-2'>
       <div>
       <MapPin className='text-white' />
       </div>
@@ -32,7 +32,7 @@ export default function Sidebar() {
           <h3 className='text-white text-md'>Point de ventes</h3>
       </div>
   </div>
-  <div className='flex items-center gap-2'>
+  <div className='flex cursor-pointer items-center gap-2'>
       <div>
       <Trophy className='text-white' />
       </div>
@@ -40,7 +40,7 @@ export default function Sidebar() {
           <h3 className='text-white text-md'>Lots à gagner</h3>
       </div>
   </div>
-  <div className='flex items-center gap-2'>
+  <div className='flex cursor-pointer items-center gap-2'>
       <div>
       <Trophy className='text-white' />
       </div>
@@ -49,7 +49,7 @@ export default function Sidebar() {
       </div>
   </div>
 
-  <div className='flex items-center gap-2'>
+  <div className='flex cursor-pointer items-center gap-2'>
       <div>
       <Medal className='text-white' />
       </div>
@@ -58,6 +58,17 @@ export default function Sidebar() {
       </div>
   </div>
 </section>
+<div className='absolute bottom-6 cursor-pointer'>
+    <div className='flex items-center gap-3'>
+        <div>
+        <LogOut className='w-5 h-5 text-gray-500'/>
+        </div>
+        <div>
+            <h2 className='text-gray-500'>Deconnexion</h2>
+        </div>
+    </div>
+
+</div>
     </section>
   )
 }
