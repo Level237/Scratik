@@ -2,12 +2,14 @@
 
 import { UserCells } from "@/data/users/UserCells"
 import { users } from "@/data/users/users";
+import { winning } from "@/data/winning/winning";
 import { winningCells } from "@/data/winning/winningCells";
 import { Delete, Edit, EditIcon, Trash } from "lucide-react";
+import Image from "next/image";
 
 export default function WinningTable() {
     const winningCell=winningCells;
-    const Users=users
+    const Winning=winning
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -32,25 +34,24 @@ export default function WinningTable() {
             </tr>
         </thead>
         <tbody>
-            {Users.map((user)=>{
+            {Winning.map((winning)=>{
 
                 return (
-                    <tr key={user.id} className=" odd:dark:bg-gray-900 text-white even:bg-[#ffffff10] even:dark:bg-gray-800  ">
+                    <tr key={winning.id} className=" odd:dark:bg-gray-900 text-white even:bg-[#ffffff10] even:dark:bg-gray-800  ">
                                     <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap text-white">
-                                        {user.name}
+                                        {winning.nom}
                                     </th>
                                     <td className="px-6 py-4">
-                                      {user.ville}
+                                      {winning.quantity}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {user.quartier}
+                                        {winning.mode}
                                     </td>
                                     <td className="px-6 py-4">
-                                       {user.campaign}
+                                        <Image src={winning.photo} width={30} height={30} alt={""}/>
+                                       
                                     </td>
-                                    <td className="px-6 py-4">
-                                       {user.etat}
-                                    </td>
+                                    
                                     <td className="px-6 py-4 flex gap-3">
                                         <EditIcon className="h-5 w-5 text-gray-500"/>
                                         <Trash className="h-5 w-5 text-gray-500"/>
