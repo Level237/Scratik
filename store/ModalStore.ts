@@ -6,7 +6,7 @@ interface ModalStoreInterface{
     close:()=>void
 }
 
-export const SidebarStore=create<ModalStoreInterface>((set)=>({
+export const ModalStore=create<ModalStoreInterface>((set)=>({
     isVisible:false,
     open:()=>{
         set({isVisible:true})
