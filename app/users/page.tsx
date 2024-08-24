@@ -1,4 +1,5 @@
 'use client'
+import AddUser from '@/components/forms/AddUser'
 import Modal from '@/components/Modal'
 import UserTable from '@/components/tables/UserTable'
 import { Separator } from '@/components/ui/separator'
@@ -17,7 +18,10 @@ export default function page() {
         <AnimatePresence>
 
 
-{isVisible && <Modal/>}
+{isVisible && <Modal title="Ajouter un utilisateur">
+    
+    <AddUser/>
+    </Modal>}
 </AnimatePresence>
  <section className='flex justify-between'>
         <section className='flex items-start'>
