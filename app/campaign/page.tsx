@@ -1,18 +1,35 @@
-import DataTableDemo from '@/components/DataTable'
+'use client'
+import AddCampaign from '@/components/forms/AddCampaign'
+import AddSale from '@/components/forms/AddSale'
+import Modal from '@/components/Modal'
 import CampaignTable from '@/components/tables/CampaignTable'
 import UserTable from '@/components/tables/UserTable'
 import WinningTable from '@/components/tables/WinningTable'
 import { Separator } from '@/components/ui/separator'
+import { ModalStore } from '@/store/ModalStore'
+import { AnimatePresence } from 'framer-motion'
 import { Filter } from 'lucide-react'
 import React from 'react'
 
 export default function page() {
+    const open=ModalStore((set:any)=>set.open)
+    
+    const isVisible=ModalStore((set:any)=>set.isVisible)
   return (
     <section className='flex flex-col gap-12 flex-1'>
+
+<AnimatePresence>
+
+
+{isVisible && <Modal title="Ajouter une campagne">
+    
+    <AddCampaign/>
+    </Modal>}
+</AnimatePresence>
  <section className='flex justify-between'>
         <section className='flex items-start'>
         <div className='flex gap-3'>
-        <button className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
+        <button onClick={()=>open()} className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
         <input className='bg-[#ffffff10] px-6 w-52 text-gray-300 placeholder:text-gray-400 
         placeholder:text-md
         ' placeholder='Rechercher' type="text" />
