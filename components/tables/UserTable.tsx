@@ -55,7 +55,13 @@ export default function UserTable() {
             </tr>
         </thead>
         <tbody>
-            {data.map((user)=>{
+            {data.map((user:{
+                _id:string,
+                username:string,
+                login:string,
+                quarter:string,
+                role:string,
+            })=>{
 
                 return (
                     <tr key={user._id} className=" odd:dark:bg-gray-900 text-white even:bg-[#ffffff10] even:dark:bg-gray-800  ">
