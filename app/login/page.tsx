@@ -9,10 +9,10 @@ export default function page() {
 
     const router=useRouter();
 
+    const [error,setError]=useState('')
     const [admin,setAdmin]=useState({
         email:"",
         password:"",
-        username:""
     })
 
     const [buttonDisable,setButtonDisabled]=React.useState(false)
@@ -21,12 +21,27 @@ export default function page() {
     
 
     useEffect(()=>{
-        if(admin.email.length>0 && admin.password.length >0 && admin.username.length >0){
+        if(admin.email.length>0 && admin.password.length >0){
             setButtonDisabled(false)
         }else{
             setButtonDisabled(true)
         }
     },[admin])
+
+    const onLogin=async ()=>{
+        try {
+            setLoading(true);
+            const response=await axios.post("api/users/login",admin);
+            //toast.success('Login Success')
+            router.push('/profile')
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+            setError("login failed");
+            //toast.error(error.message)
+        }finally{
+            setLoading(false);
+        }
+    }
   return (
     <section className="h-screen gap-16 py-6 overflow-hidden flex justify-start mx-44 items-center">
         <section>
@@ -39,11 +54,20 @@ export default function page() {
                 <div>
                     <h3 className='text-white text-xl w-80'>Connecter vous à votre profil pour commencer</h3>
                 </div>
+                {error && <div className='text-red-500'>
+                    {error}
+                    </div>}
                 <div>
-                    <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Identifiant' name="" id="" />
+                    <input type="email" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Identifiant' name="" id=""
+                      value={admin.email}
+                      onChange={(e)=>setAdmin({...admin,email:e.target.value})}
+                    />
                 </div>
                 <div>
-                    <input type="password" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Mot de passe' name="" id="" />
+                    <input type="password" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Mot de passe' name="" id="" 
+                    value={admin.password}
+                    onChange={(e)=>setAdmin({...admin,password:e.target.value})}
+                    />
                 </div>
                 <div>
                <section className='flex items-center justify-between'>
@@ -57,7 +81,7 @@ export default function page() {
                </section>
                 </div>
                 <div>
-            <button  className='bg-[#BE7E00] px-6 py-3'>Connexion</button>
+            <button onClick={onLogin}  className='bg-[#BE7E00] px-6 py-3'>Connexion</button>
         </div>
         </section>
         
