@@ -1,9 +1,32 @@
+"use client"
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import Image from 'next/image'
-import React from 'react'
-
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
 export default function page() {
+
+    const router=useRouter();
+
+    const [admin,setAdmin]=useState({
+        email:"",
+        password:"",
+        username:""
+    })
+
+    const [buttonDisable,setButtonDisabled]=React.useState(false)
+    const [loading,setLoading]=useState(false)
+
+    
+
+    useEffect(()=>{
+        if(admin.email.length>0 && admin.password.length >0 && admin.username.length >0){
+            setButtonDisabled(false)
+        }else{
+            setButtonDisabled(true)
+        }
+    },[admin])
   return (
     <section className="h-screen gap-16 py-6 overflow-hidden flex justify-start mx-44 items-center">
         <section>
@@ -34,7 +57,7 @@ export default function page() {
                </section>
                 </div>
                 <div>
-            <button className='bg-[#BE7E00] px-6 py-3'>Connexion</button>
+            <button  className='bg-[#BE7E00] px-6 py-3'>Connexion</button>
         </div>
         </section>
         
