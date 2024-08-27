@@ -39,7 +39,12 @@ export default function AddUser() {
                 </div>
 
                 <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Role' name="" id="" />
+                  <select className='bg-transparent py-3 px-3 border-b w-52' name="" id="">
+                    <option value="">Role</option>
+                    <option value="hotesse">Hotesse</option>
+                    <option value="hotesse">Superviseur</option>
+                  </select>
+                            
                 </div>
       </div>
       <div className='flex justify-end'>

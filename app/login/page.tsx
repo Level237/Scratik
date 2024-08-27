@@ -33,7 +33,7 @@ export default function page() {
             setLoading(true);
             const response=await axios.post("api/users/login",admin);
             //toast.success('Login Success')
-            router.push('/profile')
+            router.push('/dashboard')
         } catch (error:any) {
             console.log("Login Failed",error.message)
             setError("login failed");
@@ -58,13 +58,13 @@ export default function page() {
                     {error}
                     </div>}
                 <div>
-                    <input type="email" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Identifiant' name="" id=""
+                    <input type="email" className='bg-transparent text-white py-3 px-3 border-b w-full' placeholder='Identifiant' name="" id=""
                       value={admin.email}
                       onChange={(e)=>setAdmin({...admin,email:e.target.value})}
                     />
                 </div>
                 <div>
-                    <input type="password" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Mot de passe' name="" id="" 
+                    <input type="password" className='bg-transparent text-white py-3 px-3 border-b w-full' placeholder='Mot de passe' name="" id="" 
                     value={admin.password}
                     onChange={(e)=>setAdmin({...admin,password:e.target.value})}
                     />
