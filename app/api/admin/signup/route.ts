@@ -1,5 +1,4 @@
 import {connect} from "@/db/connect"
-import User from "@/models/userModel"
 import { NextRequest,NextResponse } from "next/server"
 // @ts-ignore
 import bcryptjs from 'bcryptjs';
@@ -18,7 +17,7 @@ export async  function POST(request:NextRequest){
         console.log(reqBody)
 
         //check if user already exist
-        const user=await User.findOne({email})
+        const user=await SuperAdmin.findOne({email})
 
         if(user){
             return NextResponse.json({error:"User already exist"},{status:400})

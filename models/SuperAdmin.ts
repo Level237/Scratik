@@ -17,6 +17,6 @@ const SuperAdminSchema=new mongoose.Schema({
     },
 })
 
-const SuperAdmin=mongoose.models.users || mongoose.model('superAdmin',SuperAdminSchema)
+const SuperAdmin=mongoose.models.superAdmins || mongoose.model('superAdmins',SuperAdminSchema)
 
 export default SuperAdmin;
