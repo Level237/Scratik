@@ -4,8 +4,20 @@ import { Grip, LayoutGrid, LogOut, MapPin, Medal, Trophy, User } from 'lucide-re
 import Image from 'next/image'
 import { SidebarStore } from '@/store/SidebarStore'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import axios from 'axios'
 export default function Sidebar() {
-
+    const router=useRouter()
+    const logout=async ()=>{
+        try {
+            await axios.get('/api/users/logout')
+            //toast.success('Logged out successfully')
+            router.push('/login')
+        } catch (error:any) {
+            console.log(error.message)
+            //toast.error(error.message)
+        }
+    }
     const currentPage=SidebarStore((set)=>set.currentPage)
     const setCurrentPage=SidebarStore((set)=>set.setCurrentPage)
   return (
@@ -94,7 +106,7 @@ export default function Sidebar() {
         <div>
         <LogOut className='w-5 h-5 text-gray-500'/>
         </div>
-        <div>
+        <div  onClick={logout}>
             <h2 className='text-gray-500'>Deconnexion</h2>
         </div>
     </div>
