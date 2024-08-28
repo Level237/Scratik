@@ -21,10 +21,10 @@ export default function AddSale() {
   const createSale=async ()=>{
     try {
         setLoading(true)
-        const response=await axios.post('/api/users/sales',sale)
+        const response=await axios.post('/api/sales/new',sale)
 
         console.log("signup success",response.data)
-        router.push("/users")
+        router.push("/sales")
     } catch (error:any) {
         console.log("Signup failed",error.message)
         //toast.error(error.message)
