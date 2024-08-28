@@ -1,9 +1,36 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Label } from '../ui/label'
 import { ImageIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 export default function AddWinning() {
+
+  const router=useRouter();
+  const [buttonDisable,setButtonDisabled]=React.useState(false)
+    const [loading,setLoading]=useState(false)
+  const [winning,setWinning]=React.useState({
+    nameWinning:"",
+    quantity:"",
+    mode:"",
+    image:"",
+  })
+
+  const createWinning=async ()=>{
+    try {
+        setLoading(true)
+        const response:any=await axios.post('/api/winning/new',winning)
+        console.log(response)
+        //router.push("/sales")
+    } catch (error:any) {
+      console.log(error)
+        //console.log("Signup failed",error.message)
+        //toast.error(error.message)
+    }finally{
+        setLoading(false)
+    }
+}
   return (
     <section>
         <form action="">
@@ -16,8 +43,16 @@ export default function AddWinning() {
                 <div>
                             <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quantité' name="" id="" />
                 </div>
-                <div className='flex flex-col justify-start items-start gap-5 mt-12'>
+                <div className='flex mt-12'>
                     <Label>Mode de remise</Label>
+                </div>
+                <div className='flex items-center justify-start gap-2 mt-4'>
+                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3'  name="mode" id="point de vente" />
+                <label >Dans un point de vente</label>
+                </div>
+                <div className='flex items-center justify-start gap-2 mt-4'>
+                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3' placeholder='Quantité' name="mode" id="centre de distribution" />
+                <label >Dans un centre de distribution</label>
                 </div>
       </div>
 

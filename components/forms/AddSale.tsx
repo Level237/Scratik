@@ -22,8 +22,6 @@ export default function AddSale() {
     try {
         setLoading(true)
         const response:any=await axios.post('/api/sales/new',sale)
-        localStorage.setItem("response",response)
-        console.log(response)
         //router.push("/sales")
     } catch (error:any) {
       console.log(error)

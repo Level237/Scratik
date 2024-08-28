@@ -13,9 +13,12 @@ export async  function POST(request:NextRequest){
         const reqBody=await request.json();
         const {nameWinning,quantity,mode,image}=reqBody
 
-        console.log(reqBody)
+        if(!image){
+            return NextResponse.json({success:false})
+        }
+        const bufferData=await image.arrayBuffer()
+        const buffer=Buffer.from(bufferData);
 
-       
 
         //Hash password
         
@@ -24,7 +27,7 @@ export async  function POST(request:NextRequest){
            nameWinning,
            quantity,
            mode,
-           image
+           image:buffer
         })
 
         const savedWinning=await newWinning.save()

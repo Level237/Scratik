@@ -15,7 +15,7 @@ const winningPriceSchema=new mongoose.Schema({
         require:[true,"Please provide a mode"]
     },
     image:{
-        type:String,
+        type:Buffer,
         require:[true,"Please provide a image"]
     }
 })
