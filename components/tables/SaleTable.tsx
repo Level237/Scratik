@@ -2,11 +2,14 @@
 
 import { sales } from "@/data/sales/sales";
 import { salesCells } from "@/data/sales/salesCells";
+import axios from "axios";
 import { Delete, Edit, EditIcon, Trash } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 export default function SaleTable() {
     const userCells=salesCells;
     const Sales=sales
+
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

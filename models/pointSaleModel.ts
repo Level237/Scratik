@@ -18,7 +18,7 @@ const pointSaleSchema=new mongoose.Schema({
         require:[true,"Please provide a localisation"]
     },
     statutSale:{
-        type:Boolean,
+        type:String,
         require:[true,"Please provide a statut"],
         default:true,
     },

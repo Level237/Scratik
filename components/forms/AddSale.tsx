@@ -21,22 +21,18 @@ export default function AddSale() {
   const createSale=async ()=>{
     try {
         setLoading(true)
-        const response=await axios.post('/api/sales/new',sale)
-
-        console.log("signup success",response.data)
-        router.push("/sales")
+        const response:any=await axios.post('/api/sales/new',sale)
+        localStorage.setItem("response",response)
+        console.log(response)
+        //router.push("/sales")
     } catch (error:any) {
-        console.log("Signup failed",error.message)
+      console.log(error)
+        //console.log("Signup failed",error.message)
         //toast.error(error.message)
     }finally{
         setLoading(false)
     }
 }
-
-useEffect(()=>{
- 
-  
-},[])
   return (
     <section>
         <form action="">
@@ -73,8 +69,8 @@ useEffect(()=>{
       <div className='flex mb-5 items-center justify-between'>
             <div>
                             <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Numéro de téléphone' name="" id="" 
-                             value={sale.quarter}
-                             onChange={(e)=>setSale({...sale,quarter:e.target.value})}
+                             value={sale.phoneSale}
+                             onChange={(e)=>setSale({...sale,phoneSale:e.target.value})}
                             />
                 </div>
 

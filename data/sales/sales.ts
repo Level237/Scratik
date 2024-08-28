@@ -63,7 +63,7 @@ export const sales=[
         statut:"Ouvert"
     },
     {
-        id:7,
+        id:8,
         nom:"La Grace divine",
         quartier:"beedi",
         phone:"690394365",

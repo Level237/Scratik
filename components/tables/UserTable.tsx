@@ -18,7 +18,7 @@ export default function UserTable() {
         try {
             
             
-            const response=await axios.post("api/users");
+            const response=await axios.get("api/users");
             setLoading(false);
             //toast.success('Login Success')
             setData(response.data.data)

@@ -13,7 +13,7 @@ export async  function POST(request:NextRequest){
         const reqBody=await request.json();
         const {quarter,nameSale,localisation,phoneSale,statutSale,typeSale,townSale,hours}=reqBody
 
-        console.log(reqBody)
+        //console.log(reqBody)
 
        
 
@@ -41,6 +41,6 @@ export async  function POST(request:NextRequest){
 
 
     } catch (error:any) {
-        return NextResponse.json({error:error.message})
+        return NextResponse.json({error:error.message},{status:500})
     }
 }
