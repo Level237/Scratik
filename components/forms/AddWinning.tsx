@@ -4,6 +4,7 @@ import { Label } from '../ui/label'
 import { ImageIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 
 export default function AddWinning() {
 
@@ -56,10 +57,14 @@ export default function AddWinning() {
                 </div>
       </div>
 
-      <div className='flex items-center flex-col justify-center bg-slate-200 w-80 h-44 rounded-xl'>
-            <ImageIcon className='w-16 text-gray-500 h-16'/>
-            <h1 className='text-gray-500'>Ajouter une image du lot</h1>
-      </div>
+      <label  className="flex cursor-pointer items-center flex-col justify-center bg-slate-200 w-80 h-44 rounded-xl">
+      <ImageIcon className='w-16 text-gray-500 h-16'/>
+   <div className="space-y-2">
+      <h4 className="text-base font-semibold text-gray-700">Upload a file</h4>
+      <span className="text-sm text-gray-500">Max 2 MO</span>
+   </div>
+   <input type="file" id="doc" name="doc" accept="png, jpg" hidden/>
+</label>
             </div>
       <div className='flex mt-8 justify-end'>
       <button  className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
