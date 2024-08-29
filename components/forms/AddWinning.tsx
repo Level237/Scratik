@@ -50,7 +50,7 @@ export default function AddWinning() {
       </div>
 
       <label  className="flex cursor-pointer items-center flex-col justify-center bg-slate-200 w-80 h-44 rounded-xl">
-        {image.length > 0 && <div>
+        {image.length > 0 && !loadImage  && <div>
             <Image src={image} className="w-full h-full max-h-44" width="100" height="100" alt="dd"/>
             </div>}
       
