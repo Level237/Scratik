@@ -20,9 +20,31 @@ export default function AddWinning() {
     image:"",
   })
 
+  function convertToBase64(e:any){
+    var reader=new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload=()=>{
+      console.log(reader.result)
+      setImage(reader.result)
+      setWinning({...winning,image:reader.result})
+    }
+    reader.onerror=error=>{
+      console.log("error",error)
+    }
+  }
   const createWinning=async ()=>{
     
-    console.log(winning.image)
+    try {
+      setLoading(true)
+      const response:any=await axios.post('/api/winning/new',winning)
+      router.push("/winning")
+  } catch (error:any) {
+    console.log(error)
+      //console.log("Signup failed",error.message)
+      //toast.error(error.message)
+  }finally{
+      setLoading(false)
+  }
 }
   return (
     <section>
@@ -30,21 +52,33 @@ export default function AddWinning() {
             <div className='flex gap-8 justify-between items-center'>
             <div className='flex flex-col mb-5 items-center justify-between'>
             <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nom du lot' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nom du lot' name="" id="" 
+                             value={winning.nameWinning}
+                             onChange={(e)=>setWinning({...winning,nameWinning:e.target.value})}
+                            />
                 </div>
 
                 <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quantité' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quantité' name="" id="" 
+                             value={winning.quantity}
+                             onChange={(e)=>setWinning({...winning,quantity:e.target.value})}
+                            />
                 </div>
                 <div className='flex mt-12'>
                     <Label>Mode de remise</Label>
                 </div>
                 <div className='flex items-center justify-start gap-2 mt-4'>
-                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3'  name="mode" id="point de vente" />
+                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3'  name="mode" id="point de vente" 
+                 value="point de vente"
+                 onChange={(e)=>setWinning({...winning,mode:e.target.value})}
+                />
                 <label >Dans un point de vente</label>
                 </div>
                 <div className='flex items-center justify-start gap-2 mt-4'>
-                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3' placeholder='Quantité' name="mode" id="centre de distribution" />
+                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3' placeholder='Quantité' name="mode" id="centre de distribution" 
+                value="centre de distribution"
+                onChange={(e)=>setWinning({...winning,mode:e.target.value})}
+                />
                 <label >Dans un centre de distribution</label>
                 </div>
       </div>
@@ -75,16 +109,7 @@ export default function AddWinning() {
       <span className="text-sm text-gray-500">Max 2 MO</span>
    </div></>}
    <input type="file" id="doc" name="image" accept="png, jpg" hidden
-   onChange={(e)=>{
-    setLoadImage(true)
-    setTimeout(()=>{
-      if(e.target.files?.length===1){
-      setImage(URL.createObjectURL(e.target.files[0]));
-      setLoadImage(false)
-    }
-    },[2000])
-    setWinning({...winning,image:e.target.files?.[0]})
-   }}
+   onChange={convertToBase64}
    />
 </label>
             </div>

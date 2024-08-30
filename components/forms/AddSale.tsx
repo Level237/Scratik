@@ -22,7 +22,7 @@ export default function AddSale() {
     try {
         setLoading(true)
         const response:any=await axios.post('/api/sales/new',sale)
-        //router.push("/sales")
+        router.push("/sales")
     } catch (error:any) {
       console.log(error)
         //console.log("Signup failed",error.message)
