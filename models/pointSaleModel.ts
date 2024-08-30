@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const pointSaleSchema=new mongoose.Schema({
     quarter:{
@@ -9,6 +9,10 @@ const pointSaleSchema=new mongoose.Schema({
         type:String,
         require:[true,"Please provide a nameSale"]
     },
+    campaigns:[{
+        type:Schema.Types.ObjectId,
+        ref:"Campaign"
+    }],
     localisation:{
         type:String,
         require:[true,"Please provide a localisation"]

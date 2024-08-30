@@ -1,7 +1,24 @@
 'use client'
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react'
 
 export default function AddCampaign() {
+  const router=useRouter();
+  const [buttonDisable,setButtonDisabled]=React.useState(false)
+    const [loading,setLoading]=useState(false)
+  const [sale,setSale]=React.useState({
+    campaignName:"",
+    campaignLots:"",
+    campaignQuantity:"",
+    campaignPrice:"",
+    winningPrice:"",
+    user:"",
+    campaignTown:"",
+    campaignPeriod:"",
+    campaignDistrict:"",
+    ticketNumber:0,
+    campaignQuarter:""
+  })
   return (
     <section>
         <form action="">
@@ -51,6 +68,9 @@ export default function AddCampaign() {
       <div className='flex mb-5 items-center justify-between'>
             <div>
                             <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quartier' name="" id="" />
+                </div>
+                <div>
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Point de vente' name="" id="" />
                 </div>
       </div>
       <div className='flex justify-end'>

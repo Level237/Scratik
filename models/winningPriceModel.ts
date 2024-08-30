@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const winningPriceSchema=new mongoose.Schema({
 
@@ -6,6 +6,10 @@ const winningPriceSchema=new mongoose.Schema({
         type:String,
         require:[true,"Please provide a name of Winning"]
     },
+    campaigns:[{
+        type:Schema.Types.ObjectId,
+        ref:"Campaign"
+    }],
     quantity:{
         type:Number,
         require:[true,"Please provide a quantity"]

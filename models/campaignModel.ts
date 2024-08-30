@@ -7,10 +7,6 @@ const CampaignSchema=new mongoose.Schema({
         type:String,
         require:[true,'Please provide a campaign name']
     },
-    campaignLots:{
-        type:String,
-        require:[true,"Please provide a campaign lots"]
-    },
     campaignQuantity:{
         type:String,
         require:[true,"Please provide a campaign quantity"]
@@ -18,6 +14,10 @@ const CampaignSchema=new mongoose.Schema({
     campaignBrand:{
         type:String,
         require:[true,"Please provide a campaign brand"]
+    },
+    sale:{
+        type:Schema.Types.ObjectId,
+        ref:"Sale"
     },
     winningPrice:{
         type:Schema.Types.ObjectId,
