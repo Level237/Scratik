@@ -4,11 +4,71 @@ import { campaign } from "@/data/campaign/campaign";
 import { campaignCells } from "@/data/campaign/campaignCell";
 import { sales } from "@/data/sales/sales";
 import { salesCells } from "@/data/sales/salesCells";
+import axios from "axios";
 import { Delete, Edit, EditIcon, Trash } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 export default function CampaignTable() {
     const CampaignCells=campaignCells;
     const Campaign=campaign
+    const [buttonDisable,setButtonDisabled]=React.useState(false)
+    const [loading,setLoading]=useState(false)
+    const [data,setData]=useState([])
+    const [dataSale,setDataSale]=useState([])
+    const [dataWin,setDataWin]=useState([])
+    const getWinning=async ()=>{
+        try {
+            
+            
+            const response=await axios.get("api/winning");
+            setLoading(false);
+            //toast.success('Login Success')
+            setDataWin(response.data.data)
+            setLoading(false)
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+        }finally{
+            
+        }
+    }
+      const getHotesse=async ()=>{
+        try {
+            
+            
+            const response=await axios.get("api/users/byrole");
+            setLoading(false);
+            //toast.success('Login Success')
+            console.log(response.data.data)
+            setData(response.data.data)
+            setLoading(false)
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+        }finally{
+            
+        }
+    }
+    const getSales=async ()=>{
+      try {
+          
+          
+          const response=await axios.get("api/sales");
+          setLoading(false);
+          //toast.success('Login Success')
+          setDataSale(response.data.data)
+          setLoading(false)
+      } catch (error:any) {
+          console.log("Login Failed",error.message)
+      }finally{
+          
+      }
+    }
+    
+    useEffect(()=>{
+       getHotesse()
+       getWinning()
+       //console.log(loading)
+       //setLoading(false)
+    },[data,dataWin])
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

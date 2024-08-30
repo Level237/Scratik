@@ -106,6 +106,12 @@ export default function UserTable() {
     <span className="sr-only">Loading...</span>
     
 </div>}
+
+{data.length===0 && !loading && 
+<div className="mt-12 flex items-center justify-center mb-12">
+    <h2 className="text-gray-500">Pas d'utilisateur</h2>
+</div>
+}
 </div>
   )
 }

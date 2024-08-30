@@ -31,7 +31,11 @@ export default function page() {
     const onLogin=async ()=>{
         try {
             setLoading(true);
-            const response=await axios.post("api/admin/login",admin);
+            const response=await axios.post("api/admin/signup",{
+                username:"scratik",
+                email:"scratik@gmail.com",
+                password:"password"
+            });
             //toast.success('Login Success')
             router.push('/dashboard')
         } catch (error:any) {
