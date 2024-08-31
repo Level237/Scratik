@@ -9,7 +9,7 @@ const pointSaleSchema=new mongoose.Schema({
         type:String,
         require:[true,"Please provide a nameSale"]
     },
-    campaigns:[{
+    campaignSale:[{
         type:Schema.Types.ObjectId,
         ref:"Campaign"
     }],

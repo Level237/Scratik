@@ -6,7 +6,7 @@ const winningPriceSchema=new mongoose.Schema({
         type:String,
         require:[true,"Please provide a name of Winning"]
     },
-    campaigns:[{
+    campaignWinning:[{
         type:Schema.Types.ObjectId,
         ref:"Campaign"
     }],

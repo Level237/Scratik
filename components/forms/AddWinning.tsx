@@ -57,30 +57,33 @@ export default function AddWinning() {
                              onChange={(e)=>setWinning({...winning,nameWinning:e.target.value})}
                             />
                 </div>
+                <form action="">
+                    <div>
+                                <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quantité' name="" id="" 
+                                value={winning.quantity}
+                                onChange={(e)=>setWinning({...winning,quantity:e.target.value})}
+                                />
+                    </div>
+                    <div className='flex mt-12'>
+                        <Label>Mode de remise</Label>
+                    </div>
+                    <div className='flex items-center justify-start gap-2 mt-4'>
+                    <input type="radio" className='bg-transparent py-1 px-3 border-b w-3'  name="mode" id="point de vente" 
+                    value="point de vente"
+                    onChange={(e)=>setWinning({...winning,mode:e.target.value})}
+                    />
+                    <label >Dans un point de vente</label>
+                    </div>
+                    <div className='flex items-center justify-start gap-2 mt-4'>
+                    <input type="radio" className='bg-transparent py-1 px-3 border-b w-3' placeholder='Quantité' name="mode" id="centre de distribution" 
+                    value="centre de distribution"
+                    onChange={(e)=>setWinning({...winning,mode:e.target.value})}
+                    />
+                    <label >Dans un centre de distribution</label>
+                    </div>
 
-                <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quantité' name="" id="" 
-                             value={winning.quantity}
-                             onChange={(e)=>setWinning({...winning,quantity:e.target.value})}
-                            />
-                </div>
-                <div className='flex mt-12'>
-                    <Label>Mode de remise</Label>
-                </div>
-                <div className='flex items-center justify-start gap-2 mt-4'>
-                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3'  name="mode" id="point de vente" 
-                 value="point de vente"
-                 onChange={(e)=>setWinning({...winning,mode:e.target.value})}
-                />
-                <label >Dans un point de vente</label>
-                </div>
-                <div className='flex items-center justify-start gap-2 mt-4'>
-                <input type="radio" className='bg-transparent py-1 px-3 border-b w-3' placeholder='Quantité' name="mode" id="centre de distribution" 
-                value="centre de distribution"
-                onChange={(e)=>setWinning({...winning,mode:e.target.value})}
-                />
-                <label >Dans un centre de distribution</label>
-                </div>
+                </form>
+              
       </div>
 
       <label  className="flex cursor-pointer items-center flex-col justify-center bg-slate-200 w-80 h-44 rounded-xl">

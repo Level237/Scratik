@@ -28,7 +28,7 @@ const userSchema=new mongoose.Schema({
         require:[true,"Please provide a login"],
         unique:true,
     },
-    campaigns:[{
+    campaignUser:[{
         type:Schema.Types.ObjectId,
         ref:"Campaign"
     }],

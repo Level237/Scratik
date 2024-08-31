@@ -13,6 +13,28 @@ export default function CampaignTable() {
     const Campaign=campaign
     const [buttonDisable,setButtonDisabled]=React.useState(false)
     const [loading,setLoading]=useState(false)
+    const [data,setData]=useState([])
+    const getCampaign=async ()=>{
+        try {
+            
+            
+            const response=await axios.get("api/campaigns");
+            setLoading(false);
+            //toast.success('Login Success')
+            setData(response.data.data)
+            console.log(response.data.data)
+            setLoading(false)
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+        }finally{
+            
+        }
+    }
+    useEffect(()=>{
+       getCampaign()
+       //console.log(loading)
+       //setLoading(false)
+    },[data])
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

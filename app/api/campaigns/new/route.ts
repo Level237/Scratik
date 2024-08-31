@@ -54,11 +54,11 @@ export async  function POST(request:NextRequest){
 
         const savedCampaign=await newCampaign.save()
 
-        userCampaign.campaigns.push(newCampaign)
+        userCampaign.campaignUser.push(newCampaign)
         await userCampaign.save()
-        saleCampaign.campaigns.push(newCampaign)
+        saleCampaign.campaignSale.push(newCampaign)
         await saleCampaign.save()
-        winningCampaign.campaigns.push(newCampaign)
+        winningCampaign.campaignWinning.push(newCampaign)
         await winningCampaign.save()
         return NextResponse.json({message:"Campaign created successfully",
         success:true,
