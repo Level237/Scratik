@@ -48,16 +48,19 @@ export default function AddWinning() {
 }
   return (
     <section>
-        
+       
+
+       
             <div className='flex gap-8 justify-between items-center'>
             <div className='flex flex-col mb-5 items-center justify-between'>
-            <div>
+           
+                <form action="">
+                <div>
                             <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nom du lot' name="" id="" 
                              value={winning.nameWinning}
                              onChange={(e)=>setWinning({...winning,nameWinning:e.target.value})}
                             />
                 </div>
-                <form action="">
                     <div>
                                 <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quantité' name="" id="" 
                                 value={winning.quantity}

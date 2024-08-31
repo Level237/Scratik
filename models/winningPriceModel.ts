@@ -24,6 +24,6 @@ const winningPriceSchema=new mongoose.Schema({
     }
 })
 
-const Winning=mongoose.models.winnings || mongoose.model('winnings',winningPriceSchema)
+const Winning=mongoose.models.Winning || mongoose.model('Winning',winningPriceSchema)
 
 export default Winning;
