@@ -91,15 +91,17 @@ export default function Sidebar() {
   </div>
  </Link>
  
-
-  <div className='flex cursor-pointer items-center gap-2'>
+ <Link href="/winners" onClick={()=>setCurrentPage(6)}>
+  <div className={`flex cursor-pointer ${currentPage === 6 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
+ items-center gap-2`}>
       <div>
-      <Medal className='text-white' />
+      <Medal className={`${currentPage===6 ? "text-[#BE7E00]" : "text-white"}`} />
       </div>
       <div>
-          <h3 className='text-white text-md'>Gagnants</h3>
+          <h3 className={`${currentPage===6 ? "text-[#BE7E00]" : "text-white"}`}>Gagnants</h3>
       </div>
   </div>
+  </Link>
 </section>
 <div className='absolute bottom-6 cursor-pointer'>
     <div className='flex items-center gap-3'>
