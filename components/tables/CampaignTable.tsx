@@ -34,7 +34,7 @@ export default function CampaignTable() {
        getCampaign()
        //console.log(loading)
        //setLoading(false)
-    },[data])
+    },[])
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -64,27 +64,27 @@ export default function CampaignTable() {
             </tr>
         </thead>
         <tbody>
-            {Campaign.map((campaign)=>{
+            {data.map((campaign)=>{
 
                 return (
                     <tr key={campaign.id} className=" odd:dark:bg-gray-900 text-white even:bg-[#ffffff10] even:dark:bg-gray-800  ">
                                     <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap text-white">
-                                        {campaign.marque}
+                                        {campaign.campaignBrand}
                                     </th>
                                     <td className="px-6 py-4">
-                                      {campaign.ville}
+                                      {campaign.campaignTown}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {campaign.point}
+                                        {campaign.sale}
                                     </td>
                                     <td className="px-6 py-4">
                                        {campaign.hotesse}
                                     </td>
                                     <td className="px-6 py-4">
-                                       {campaign.periode}
+                                       {campaign.campaignPeriod}
                                     </td>
                                     <td className="px-6 py-4">
-                                       {campaign.nbre}
+                                       {campaign.campaignQuantity}
                                     </td>
                                     <td className="px-6 py-4 flex gap-3">
                                         <EditIcon className="h-5 w-5 text-gray-500"/>

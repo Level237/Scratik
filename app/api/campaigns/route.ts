@@ -7,7 +7,11 @@ connect()
 
 export async function GET(request:NextRequest){
     try {
-        const campaign=await Campaign.find().populate('user');
+        const campaign=await Campaign.find()
+        .populate('user')
+        .populate('sale')
+        .populate('winningPrice')
+        
 
      const response=NextResponse.json({
             data:campaign,
@@ -16,6 +20,7 @@ export async function GET(request:NextRequest){
 
         return response;
     } catch (error:any) {
+        console.log(error)
         return NextResponse.json({error:error.message},{status:500})
     }
 }

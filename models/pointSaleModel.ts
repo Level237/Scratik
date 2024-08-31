@@ -40,6 +40,6 @@ const pointSaleSchema=new mongoose.Schema({
     }
 })
 
-const Sale=mongoose.models.sales || mongoose.model('sales',pointSaleSchema)
+const Sale=mongoose.models.Sale || mongoose.model('Sale',pointSaleSchema)
 
 export default Sale;

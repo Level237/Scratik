@@ -33,7 +33,7 @@ export default function UserTable() {
        getUsers()
        console.log(loading)
        //setLoading(false)
-    },[data])
+    },[])
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

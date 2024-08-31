@@ -24,7 +24,7 @@ const CampaignSchema=new mongoose.Schema({
         ref:"Winning"
     },
     user:{
-        type:Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
     campaignTown:{
