@@ -13,11 +13,11 @@ export default function AddCampaign() {
 
   const [campaign,setCampaign]=React.useState({
     campaignName:"",
-    campaignLots:"",
     campaignQuantity:"",
-    campaignPrice:"",
+    campaignBrand:"",
     winningPrice:"",
     user:"",
+    sale:"",
     campaignTown:"",
     campaignPeriod:"",
     campaignDistrict:"",
@@ -73,18 +73,25 @@ const getSales=async ()=>{
 }
 
 useEffect(()=>{
-   getHotesse()
-   getWinning()
-   //console.log(loading)
-   //setLoading(false)
-},[data,dataWin])
+  getHotesse()
+  getWinning()
+  getSales()
+  //console.log(loading)
+  //setLoading(false)
+},[])
 
   return (
     <section>
         <form action="">
         <div className='flex mb-5 gap-8 items-center justify-between'>
             <div className='flex-1'>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nom de la campagne' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nom de la campagne' name="" id="" 
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignName:e.target.value})
+                          }}
+                          
+                            />
                 </div>
 
                 <div className='flex-1 flex gap-3 justify-center'>
@@ -106,14 +113,26 @@ useEffect(()=>{
                             
                 </div>
                 <div>
-                            <input type="text" className='bg-transparent py-3 px-1 border-b w-36' placeholder="Quantité" name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-1 border-b w-36' placeholder="Quantité" name="" id=""
+                            
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignQuantity:e.target.value})
+                          }}
+                          />
                 </div>
                 </div>
                
       </div>
       <div className='flex mb-5 items-center justify-between'>
             <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Définir la marque' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Définir la marque' name="" id="" 
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignBrand:e.target.value})
+                          }}
+                          
+                            />
                 </div>
 
                 <div>
@@ -136,29 +155,73 @@ useEffect(()=>{
       </div>
       <div className='flex mb-5 items-center justify-between'>
             <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='ville' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='ville' name="" id="" 
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignTown:e.target.value})
+                          }}
+                          
+                            />
                 </div>
 
                 <div>
-                            <input type="password" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Période de la campagne' name="" id="" />
+                            <input type="date" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Période de la campagne' name="" id="" 
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignPeriod:e.target.value})
+                          }}
+                          
+                            />
                 </div>
       </div>
 
       <div className='flex mb-5 items-center justify-between'>
             <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Arrondissement' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Arrondissement' name="" id="" 
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignDistrict:e.target.value})
+                          }}
+                          
+                            />
                 </div>
 
                 <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nombre de tickets à gratter' name="" id="" />
+                            <input type="number" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Nombre de tickets à gratter' name="" id=""
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,ticketNumber:e.target.value})
+                          }}
+                          
+                            />
                 </div>
       </div>
       <div className='flex mb-5 items-center justify-between'>
             <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quartier' name="" id="" />
+                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Quartier' name="" id="" 
+                            
+                            onChange={(e)=>{
+                    
+                              setCampaign({...campaign,campaignQuarter:e.target.value})
+                          }}
+                          />
                 </div>
                 <div>
-                            <input type="text" className='bg-transparent py-3 px-3 border-b w-full' placeholder='Point de vente' name="" id="" />
+                  <select className='bg-transparent py-3 px-3 border-b w-52' name="" id=""
+                  onChange={(e)=>{
+                    
+                      setCampaign({...campaign,sale:e.target.value})
+                  }}
+                  
+                  >
+                    <option value="">Point de vente</option>
+
+                    
+                    {dataSale.map((el)=>(<>
+                      <option key={el._id} value={el._id}>{el.nameSale}</option>
+                    </>))}
+                  </select>
+                            
                 </div>
       </div>
       <div className='flex justify-end'>
