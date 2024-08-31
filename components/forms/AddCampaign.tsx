@@ -80,6 +80,19 @@ useEffect(()=>{
   //setLoading(false)
 },[])
 
+const createCampaign=async ()=>{
+  try {
+      setLoading(true)
+      const response:any=await axios.post('/api/campaigns/new',campaign)
+      //router.push("/campaign")
+  } catch (error:any) {
+    console.log(error)
+      //console.log("Signup failed",error.message)
+      //toast.error(error.message)
+  }finally{
+      setLoading(false)
+  }
+}
   return (
     <section>
         <form action="">
@@ -225,7 +238,7 @@ useEffect(()=>{
                 </div>
       </div>
       <div className='flex justify-end'>
-      <button  className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
+      <button onClick={createCampaign}  className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
       </div>
 
         </form>
