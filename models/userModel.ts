@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const userSchema=new mongoose.Schema({
     username:{
@@ -28,6 +28,10 @@ const userSchema=new mongoose.Schema({
         require:[true,"Please provide a login"],
         unique:true,
     },
+    campaigns:[{
+        type:Schema.Types.ObjectId,
+        ref:"Campaign"
+    }],
     password:{
         type:String,
         require:[true,"Please provide a password"]
