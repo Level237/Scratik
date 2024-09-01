@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Grip, LayoutGrid, LogOut, MapPin, Medal, Trophy, User } from 'lucide-react'
+import { Grip, LayoutGrid, LogOut, MapPin, Medal, Settings, Trophy, User } from 'lucide-react'
 import Image from 'next/image'
 import { SidebarStore } from '@/store/SidebarStore'
 import Link from 'next/link'
@@ -22,7 +22,7 @@ export default function Sidebar() {
     const setCurrentPage=SidebarStore((set)=>set.setCurrentPage)
   return (
     <section style={{ background:"url('/bg.png')",backgroundPosition:"center",backgroundSize:"cover" }} 
-    className='max-h-[33rem] px-5 py-8 sticky top-10 w-[12rem] bottom-24'>
+    className='max-h-[34rem] px-5 py-8 sticky top-10 w-[12rem] bottom-24'>
 <Image className='w-[6rem]' width={80} height={80} src="/logo.png" alt=""/>
 
 <section className='flex flex-col mt-16 gap-6'>
@@ -99,6 +99,17 @@ export default function Sidebar() {
       </div>
       <div>
           <h3 className={`${currentPage===6 ? "text-[#BE7E00]" : "text-white"}`}>Gagnants</h3>
+      </div>
+  </div>
+  </Link>
+  <Link href="/settings" onClick={()=>setCurrentPage(7)}>
+  <div className={`flex cursor-pointer ${currentPage === 7 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
+ items-center gap-2`}>
+      <div>
+      <Settings className={`${currentPage===7 ? "text-[#BE7E00]" : "text-white"}`} />
+      </div>
+      <div>
+          <h3 className={`${currentPage===7 ? "text-[#BE7E00]" : "text-white"}`}>Parametres</h3>
       </div>
   </div>
   </Link>
