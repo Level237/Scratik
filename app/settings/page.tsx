@@ -1,6 +1,7 @@
 'use client'
 import AddUser from '@/components/forms/AddUser'
 import Modal from '@/components/Modal'
+import Settings from '@/components/settings/settings'
 import UserTable from '@/components/tables/UserTable'
 import { Separator } from '@/components/ui/separator'
 import { ModalStore } from '@/store/ModalStore'
@@ -10,19 +11,10 @@ import React from 'react'
 
 export default function page() {
 
-    const open=ModalStore((set:any)=>set.open)
     
-    const isVisible=ModalStore((set:any)=>set.isVisible)
   return (
     <section className='flex flex-col gap-12 flex-1'>
-        <AnimatePresence>
-
-
-{isVisible && <Modal title="Ajouter un utilisateur">
-    
-    <AddUser/>
-    </Modal>}
-</AnimatePresence>
+       
  <section className='flex justify-between'>
         <section className='flex items-start'>
         
@@ -40,7 +32,7 @@ export default function page() {
     <section>
         <div className='flex justify-between items-center'>
         <div>
-            <h3 className='text-lg text-[#BE7E00]'>Listes utilisateurs</h3>
+            <h3 className='text-lg text-[#BE7E00]'>Settings</h3>
         </div>
         <div className='flex items-center gap-2'>
             <Filter className='text-gray-500'/>
@@ -50,7 +42,7 @@ export default function page() {
         </div>
         </div>
         <Separator className='bg-[#BE7E00] mt-5' />
-        <UserTable/>
+        <Settings/>
     </section>
     </section>
    
