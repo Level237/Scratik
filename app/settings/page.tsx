@@ -32,7 +32,7 @@ export default function page() {
     <section>
         <div className='flex justify-between items-center'>
         <div>
-            <h3 className='text-lg text-[#BE7E00]'>Settings</h3>
+            <h3 className='text-lg text-[#BE7E00]'>Paramètres</h3>
         </div>
         <div className='flex items-center gap-2'>
             <Filter className='text-gray-500'/>
