@@ -35,10 +35,7 @@ export default function page() {
             <h3 className='text-lg text-[#BE7E00]'>Paramètres</h3>
         </div>
         <div className='flex items-center gap-2'>
-            <Filter className='text-gray-500'/>
-            <div>
-                <h2 className='text-gray-500'>Trier</h2>
-            </div>
+           
         </div>
         </div>
         <Separator className='bg-[#BE7E00] mt-5' />
