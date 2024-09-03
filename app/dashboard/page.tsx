@@ -2,6 +2,7 @@
 import Sidebar from '@/components/Sidebar'
 import Image from 'next/image'
 import React from 'react'
+import ChartHotesse from '../../components/charts/chartHotesse';
 
 export default function page() {
   return (
@@ -10,6 +11,9 @@ export default function page() {
         <span className='text-gray-500'>Bienvenue</span>
         <h3 className='text-white text-xl'>Maxime Eboue</h3>
     </div>
+    <section className=''>
+      <ChartHotesse/>
+    </section>
 </section>
   )
 }
