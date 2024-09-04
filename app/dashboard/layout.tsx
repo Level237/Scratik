@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className='h-screen mx-12 my-16 flex justify-between'>
+    <section className='h-screen gap-5 mx-12 my-16 flex'>
     <Sidebar/>
    {children}
   </section>

@@ -48,10 +48,10 @@ export default function ChartHotesse() {
 
   return (
     <>
-    <section style={{ width: "1000px", margin: "0 auto" }} className="flex flex-col bg-[#be7f003b] pt-8 px-8 gap-4 rounded-xl">
-      <h2 className="text-white text-xl">Monitoring des hotesses</h2>
+    <section  className="flex flex-1 flex-col min-w-80 bg-[#be7f003b] pt-8 px-8 gap-4 rounded-xl">
+      <h2 className="text-white text-2xl">Monitoring des hotesses</h2>
       <h2 className="text-[#BE7E00] text-5xl">54</h2>
-    <div className="" >
+    <div className="w-100" >
       <Line data={data} options={options} />
     </div>
     </section>

@@ -6,13 +6,15 @@ import ChartHotesse from '../../components/charts/chartHotesse';
 
 export default function page() {
   return (
-    <section className='flex flex-col gap-8'>
-    <div className='flex gap-3'>
+    <section className='flex flex-1 flex-col gap-8'>
+    <div className='flex  justify-end gap-3'>
         <span className='text-gray-500'>Bienvenue</span>
         <h3 className='text-white text-xl'>Maxime Eboue</h3>
     </div>
-    <section className=''>
+    <section className='flex gap-8'>
       <ChartHotesse/>
+      <ChartHotesse/>
+      
     </section>
 </section>
   )
