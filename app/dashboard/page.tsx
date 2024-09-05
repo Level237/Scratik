@@ -3,6 +3,7 @@ import Sidebar from '@/components/Sidebar'
 import Image from 'next/image'
 import React from 'react'
 import ChartHotesse from '../../components/charts/chartHotesse';
+import ChartUser from '@/components/charts/chartUser';
 
 export default function page() {
   return (
@@ -13,7 +14,7 @@ export default function page() {
     </div>
     <section className='flex gap-8'>
       <ChartHotesse/>
-      <ChartHotesse/>
+      <ChartUser/>
       
     </section>
 </section>
