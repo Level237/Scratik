@@ -4,11 +4,11 @@ import { Line } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LineElement, LinearScale, PointElement, Title, Tooltip, Legend, Filler);
-export default function ChartHotesse() {
+export default function ChartCampaign() {
   const labels = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug"];
 
   // Data want to show on chart
-  const datasets = [12, 45, 67, 43, 89, 34, 67, 43];
+  const datasets = [10, 15, 67, 70, 85, 89, 89, 90];
 
   const data = {
     labels: labels,
@@ -48,10 +48,10 @@ export default function ChartHotesse() {
 
   return (
     <>
-    <section  className="flex flex-1 flex-col min-w-80 bg-[#be7f003b] pt-8 px-8 gap-4 rounded-xl">
-      <h2 className="text-white text-2xl">Monitoring des hotesses</h2>
-      <h2 className="text-[#BE7E00] text-5xl">54</h2>
-    <div className="" >
+    <section  className="flex flex-1 h-[500px] flex-col w-[400px] bg-[#be7f003b] pt-8 px-8 gap-4 rounded-xl">
+      <h2 className="text-white text-2xl">Monitoring des utilisateurs</h2>
+      <h2 className="text-[#BE7E00] text-5xl">433</h2>
+    <div className="h-[24rem] flex items-center justify-center pb-12" >
       <Line data={data} options={options} />
     </div>
     </section>

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import ChartHotesse from '../../components/charts/chartHotesse';
 import ChartUser from '@/components/charts/chartUser';
+import ChartCampaign from '@/components/charts/chartCampaign';
 
 export default function page() {
   return (
@@ -16,6 +17,9 @@ export default function page() {
       <ChartHotesse/>
       <ChartUser/>
       
+    </section>
+    <section className='flex'>
+    <ChartCampaign/>
     </section>
 </section>
   )
