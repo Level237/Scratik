@@ -49,8 +49,22 @@ export default function ChartCampaign() {
   return (
     <>
     <section  className="flex flex-1 h-[500px] flex-col w-[400px] bg-[#be7f003b] pt-8 px-8 gap-4 rounded-xl">
-      <h2 className="text-white text-2xl">Monitoring des utilisateurs</h2>
-      <h2 className="text-[#BE7E00] text-5xl">433</h2>
+      <h2 className="text-white text-2xl">Visualisation des campagnes en cours</h2>
+      <div className="flex justify-between mt-8">
+            <div>
+            <h2 className="text-[#BE7E00] text-lg">Campagnes</h2>
+            </div>
+            <div>
+            <h2 className="text-[#BE7E00] text-lg">Hotesses</h2>
+            </div>
+            <div>
+            <h2 className="text-[#BE7E00] text-lg">Dates</h2>
+            </div>
+            <div>
+            <h2 className="text-[#BE7E00] text-lg">Point de vente</h2>
+            </div>
+      </div>
+      
     <div className="h-[24rem] flex items-center justify-center pb-12" >
       <Line data={data} options={options} />
     </div>
