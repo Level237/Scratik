@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <section className='flex flex-col items-center justify-center gap-7 flex-1'>
+    <section className='flex flex-col h-screen items-center justify-center gap-7 flex-1'>
 <div>
 <Image className='w-[11rem]' width={120} height={120} src="/logo.png" alt=""/>
 </div>
