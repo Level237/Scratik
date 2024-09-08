@@ -33,7 +33,7 @@ export default function page() {
             setLoading(true);
             const response=await axios.post("/api/supervisor/",admin);
             //toast.success('Login Success')
-            router.push('/dashboard')
+            router.push('/dashboard/supervisor')
         } catch (error:any) {
             console.log("Login Failed",error.message)
             setError("login failed");

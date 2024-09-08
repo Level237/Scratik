@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 // @ts-ignore
 import jwt from 'jsonwebtoken'
 
-export const getDataFromToken=(request:NextRequest)=>{
+export const getDataFromTokenSupervisor=(request:NextRequest)=>{
     try {
         const token=request.cookies.get('tokenSupervisor')?.value || ''
         const decodeToken:any=jwt.verify(token,process.env.TOKEN_SECRET!)
