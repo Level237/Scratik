@@ -18,7 +18,6 @@ export async function GET(request:NextRequest){
                 data:admin
     })
     } catch (error:any) {
-        console.log(error)
         return NextResponse.json({error:error.message},{status:400})
     }
 }

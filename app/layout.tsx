@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-tl from-stone-900 via-stone-900 to-[#BE7E00]">{children}</body>
+      <body className="bg-gradient-to-tl flex justify-center h-screen from-stone-900 via-stone-900 to-[#BE7E00]">{children}</body>
     </html>
   );
 }
