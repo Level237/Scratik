@@ -109,7 +109,7 @@ export default function Sidebar() {
   </div>
  </Link>
  
- <Link href="/campaign" onClick={()=>setCurrentPage(5)}>
+ {role==="superviseur"  &&   <Link href="/campaign" onClick={()=>setCurrentPage(5)}>
  <div className=
  {`flex cursor-pointer ${currentPage === 5 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
  items-center gap-2`} >
@@ -121,7 +121,8 @@ export default function Sidebar() {
       </div>
   </div>
  </Link>
- 
+ }
+
  <Link href="/winners" onClick={()=>setCurrentPage(6)}>
   <div className={`flex cursor-pointer ${currentPage === 6 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
  items-center gap-2`}>
@@ -133,7 +134,8 @@ export default function Sidebar() {
       </div>
   </div>
   </Link>
-  <Link href="/settings" onClick={()=>setCurrentPage(7)}>
+  
+  {role !=="superviseur" && <Link href="/settings" onClick={()=>setCurrentPage(7)}>
   <div className={`flex cursor-pointer ${currentPage === 7 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
  items-center gap-2`}>
       <div>
@@ -143,7 +145,7 @@ export default function Sidebar() {
           <h3 className={`${currentPage===7 ? "text-[#BE7E00]" : "text-white"}`}>Parametres</h3>
       </div>
   </div>
-  </Link>
+  </Link>}
 </section>
 <div className='absolute bottom-6 cursor-pointer'>
     <div className='flex items-center gap-3'>
