@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grip, LayoutGrid, LogOut, MapPin, Medal, Settings, Trophy, User } from 'lucide-react'
 import Image from 'next/image'
 import { SidebarStore } from '@/store/SidebarStore'
@@ -7,7 +7,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 export default function Sidebar() {
+
+    const [role,setRole]=useState("")
     const router=useRouter()
+
+    const logoutSupervisor=async ()=>{
+        try {
+            await axios.get('/api/users/logout/supervisor')
+            //toast.success('Logged out successfully')
+            router.push('/login/supervisor')
+        } catch (error:any) {
+            console.log(error.message)
+            //toast.error(error.message)
+        }
+    }
     const logout=async ()=>{
         try {
             await axios.get('/api/users/logout')
@@ -18,6 +31,16 @@ export default function Sidebar() {
             //toast.error(error.message)
         }
     }
+    const getUserDetails=async()=>{
+        const res=await axios.get('/api/supervisor/me')
+        console.log(res.data)
+        setRole(res.data.data.role)
+    }
+
+    useEffect(()=>{
+
+        getUserDetails()
+      },[])
     const currentPage=SidebarStore((set)=>set.currentPage)
     const setCurrentPage=SidebarStore((set)=>set.setCurrentPage)
   return (
@@ -119,9 +142,12 @@ export default function Sidebar() {
         <div>
         <LogOut className='w-5 h-5 text-gray-500'/>
         </div>
-        <div  onClick={logout}>
+        {role ==="superviseur"  && <div  onClick={logoutSupervisor}>
             <h2 className='text-gray-500'>Deconnexion</h2>
-        </div>
+        </div>}
+        {role !=="superviseur"  && <div  onClick={logout}>
+            <h2 className='text-gray-500'>Deconnexion</h2>
+        </div>}
     </div>
 
 </div>
