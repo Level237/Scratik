@@ -68,7 +68,7 @@ export default function Sidebar() {
   </div>
     </Link>
  
- <Link href="/users" onClick={()=>setCurrentPage(2)}>
+    {role !=="superviseur" && <Link href="/users" onClick={()=>setCurrentPage(2)}>
  <div 
  className=
  {`flex cursor-pointer ${currentPage === 2 ? "bg-[#57482959] py-2 px-4 rounded-sm" : "" } 
@@ -81,7 +81,8 @@ export default function Sidebar() {
           className={`${currentPage===2 ? "text-[#BE7E00]" : "text-white"}`}>Utilisateurs</h3>
       </div>
   </div>
- </Link>
+ </Link>}
+ 
  
  <Link  href="/sales" onClick={()=>setCurrentPage(3)}>
  <div className=
