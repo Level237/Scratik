@@ -13,11 +13,19 @@ export async function GET(request:NextRequest){
         const userId=await getDataFromTokenSupervisor(request);
         const admin=await User.findOne({_id:userId}).select("-password")
 
-        return NextResponse.json(
-            {
-                message:"User found",
-                data:admin
-    })
+        if(admin){
+            return NextResponse.json(
+                {
+                    message:"User found",
+                    data:admin
+        })
+        }else{
+            return NextResponse.json(
+                {
+                    message:"User not found",
+        })
+        }
+       
     } catch (error:any) {
         return NextResponse.json({error:error.message},{status:400})
     }

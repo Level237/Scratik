@@ -32,15 +32,23 @@ export default function Sidebar() {
         }
     }
     const getUserDetails=async()=>{
-        const res=await axios.get('/api/supervisor/me')
-        console.log(res.data)
-        setRole(res.data.data.role)
+        try{
+            const res=await axios.get('/api/supervisor/me')
+            console.log(res.data)
+            setRole(res.data.data.role)
+        } catch (error:any) {
+            console.log(error.message)
+            //toast.error(error.message)
+        }
+        
     }
 
     useEffect(()=>{
-
-        getUserDetails()
-      },[])
+        
+            getUserDetails()
+        
+        
+      },[role])
     const currentPage=SidebarStore((set)=>set.currentPage)
     const setCurrentPage=SidebarStore((set)=>set.setCurrentPage)
   return (
