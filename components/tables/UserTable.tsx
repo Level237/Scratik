@@ -5,7 +5,7 @@ import { users } from "@/data/users/users";
 import axios from "axios";
 import { Delete, Edit, EditIcon, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export default function UserTable() {
     const userCells=UserCells;
@@ -14,6 +14,18 @@ export default function UserTable() {
     const [buttonDisable,setButtonDisabled]=React.useState(false)
     const [loading,setLoading]=useState(true)
     const [data,setData]=useState([])
+
+    const deleteUser=async(_id:string)=>{
+        try {
+            router.push("/users")
+            const response=await axios.post(`api/users/delete/`,{
+                _id:_id
+            });
+            
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+        }
+    }
     const getUsers=async ()=>{
         try {
             
@@ -29,11 +41,12 @@ export default function UserTable() {
             
         }
     }
+    
     useEffect(()=>{
        getUsers()
        console.log(loading)
        //setLoading(false)
-    },[])
+    },[data])
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -88,7 +101,7 @@ export default function UserTable() {
                                     </td>
                                     <td className="px-6 py-4 flex gap-3">
                                         <EditIcon className="h-5 w-5 text-gray-500"/>
-                                        <Trash className="h-5 w-5 text-gray-500"/>
+                                        <Trash onClick={()=>deleteUser(user._id)} className="h-5 w-5 cursor-pointer text-gray-500"/>
                                     </td>
                     </tr>
                 )
