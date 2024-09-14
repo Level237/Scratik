@@ -17,7 +17,7 @@ export default function UserTable() {
 
     const deleteUser=async(_id:string)=>{
         try {
-            router.push("/users")
+            //router.push("/users")
             const response=await axios.post(`api/users/delete/`,{
                 _id:_id
             });

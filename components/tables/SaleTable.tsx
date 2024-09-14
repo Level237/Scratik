@@ -5,14 +5,27 @@ import { salesCells } from "@/data/sales/salesCells";
 import axios from "axios";
 import { Delete, Edit, EditIcon, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
 export default function SaleTable() {
     const userCells=salesCells;
     const Sales=sales
+    const router=useRouter();
 
     const [buttonDisable,setButtonDisabled]=React.useState(false)
     const [loading,setLoading]=useState(true)
     const [data,setData]=useState([])
+
+    const deleteSale=async(_id:string)=>{
+        try {
+            //router.push("/users")
+            const response=await axios.post(`api/sales/delete/`,{
+                _id:_id
+            });
+            
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+        }
+    }
     const getSales=async ()=>{
         try {
             
@@ -90,7 +103,7 @@ export default function SaleTable() {
                                     </td>
                                     <td className="px-6 py-4 flex gap-3">
                                         <EditIcon className="h-5 w-5 text-gray-500"/>
-                                        <Trash className="h-5 w-5 text-gray-500"/>
+                                        <Trash onClick={()=>deleteSale(sale._id)} className="h-5 cursor-pointer w-5 text-gray-500"/>
                                     </td>
                     </tr>
                 )
