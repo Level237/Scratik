@@ -84,7 +84,10 @@ export default function AddWinning() {
                     />
                     <label >Dans un centre de distribution</label>
                     </div>
-
+                    <div className='flex mt-8 justify-start'>
+      
+      <button onClick={createWinning} className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
+      </div>
                 </form>
               
       </div>
@@ -119,10 +122,7 @@ export default function AddWinning() {
    />
 </label>
             </div>
-      <div className='flex mt-8 justify-end'>
       
-      <button onClick={createWinning} className='bg-[#BE7E00] px-6 py-3'>Ajouter</button>
-      </div>
 
        
      

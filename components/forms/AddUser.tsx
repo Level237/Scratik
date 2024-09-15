@@ -24,7 +24,7 @@ export default function AddUser() {
         setLoading(true)
         const response=await axios.post('/api/users/signup',user)
 
-        console.log("signup success",response.data)
+        //console.log("signup success",response.data)
         router.push("/users")
     } catch (error:any) {
         console.log("Signup failed",error.message)
