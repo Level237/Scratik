@@ -14,6 +14,20 @@ export default function CampaignTable() {
     const [buttonDisable,setButtonDisabled]=React.useState(false)
     const [loading,setLoading]=useState(true)
     const [data,setData]=useState([])
+
+    const deleteCampaign=async(_id:string)=>{
+        try {
+            //router.push("/users")
+            const response=await axios.post(`api/campaigns/delete/`,{
+                _id:_id
+            });
+            
+        } catch (error:any) {
+            console.log("Login Failed",error.message)
+        }
+    }
+
+
     const getCampaign=async ()=>{
         try {
             
@@ -34,7 +48,7 @@ export default function CampaignTable() {
        getCampaign()
        //console.log(loading)
        //setLoading(false)
-    },[])
+    },[data])
   return (
     <div className="relative mt-8 max-h-96 overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -88,7 +102,7 @@ export default function CampaignTable() {
                                     </td>
                                     <td className="px-6 py-4 flex gap-3">
                                         <EditIcon className="h-5 w-5 text-gray-500"/>
-                                        <Trash className="h-5 w-5 text-gray-500"/>
+                                        <Trash onClick={()=>deleteCampaign(campaign._id)} className="h-5 w-5 cursor-pointer text-gray-500"/>
                                     </td>
                     </tr>
                 )
