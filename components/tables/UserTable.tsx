@@ -14,7 +14,21 @@ export default function UserTable() {
     const [buttonDisable,setButtonDisabled]=React.useState(false)
     const [loading,setLoading]=useState(true)
     const [data,setData]=useState([])
+    const [user,setUser]=React.useState({
+        id:"",
+        username:"",
+        quarter:"",
+        address:"",
+        email:"",
+        phone:"",
+        password:"",
+        role:"",
+        login:""
+      })
 
+      const update=(id:string,username:string,quarter:string,address:string,email:string,phone:string,password:string,role:string,login:string)=>{
+
+      }
     const deleteUser=async(_id:string)=>{
         try {
             //router.push("/users")
@@ -75,11 +89,7 @@ export default function UserTable() {
         <tbody>
          
             {data.map((user:{
-                _id:string,
-                username:string,
-                login:string,
-                quarter:string,
-                role:string,
+                _id:string,username:string,quarter:string,address:string,email:string,phone:string,password:string,role:string,login:string
             })=>{
 
                 return (
@@ -100,7 +110,7 @@ export default function UserTable() {
                                        {user.role}
                                     </td>
                                     <td className="px-6 py-4 flex gap-3">
-                                        <EditIcon className="h-5 w-5 text-gray-500"/>
+                                        <EditIcon  className="h-5 w-5 text-gray-500"/>
                                         <Trash onClick={()=>deleteUser(user._id)} className="h-5 w-5 cursor-pointer text-gray-500"/>
                                     </td>
                     </tr>

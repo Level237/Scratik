@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import axios from 'axios'
 export default function Sidebar() {
 
-    const [role,setRole]=useState("")
+    const [role,setRole]=useState(null)
     const router=useRouter()
 
     const logoutSupervisor=async ()=>{
@@ -33,9 +33,9 @@ export default function Sidebar() {
     }
     const getUserDetails=async()=>{
         try{
-            const res=await axios.get('/api/supervisor/me')
+            const res=await axios.get('/api/users/me')
             console.log(res.data)
-            setRole(res.data.data.role)
+            setRole(res.data.admin)
         } catch (error:any) {
             console.log(error.message)
             //toast.error(error.message)
@@ -56,8 +56,9 @@ export default function Sidebar() {
     className='max-h-[34rem] px-5 py-8 sticky top-10 w-[12rem] bottom-24'>
 <Image className='w-[6rem]' width={80} height={80} src="/logo.png" alt=""/>
 
+
 <section className='flex flex-col mt-16 gap-6'>
-    <Link href="/dashboard" onClick={()=>setCurrentPage(1)}>
+{role===1 &&  <Link href="/dashboard" onClick={()=>setCurrentPage(1)}>
     <div className={`flex cursor-pointer ${currentPage === 1 ? "bg-[#57482959] py-2 px-4 rounded-sm" : "" }   items-center gap-2`}>
       <div >
       <LayoutGrid  className={`${currentPage===1 ? "text-[#BE7E00]" : "text-white"}`} />
@@ -66,9 +67,19 @@ export default function Sidebar() {
           <h3 className={`${currentPage===1 ? "text-[#BE7E00]" : "text-white"} text-md`}>Dashboard</h3>
       </div>
   </div>
-    </Link>
+    </Link>}
+    {role===null &&  <Link href="dashboard/supervisor" onClick={()=>setCurrentPage(1)}>
+    <div className={`flex cursor-pointer ${currentPage === 1 ? "bg-[#57482959] py-2 px-4 rounded-sm" : "" }   items-center gap-2`}>
+      <div >
+      <LayoutGrid  className={`${currentPage===1 ? "text-[#BE7E00]" : "text-white"}`} />
+      </div>
+      <div>
+          <h3 className={`${currentPage===1 ? "text-[#BE7E00]" : "text-white"} text-md`}>Dashboard</h3>
+      </div>
+  </div>
+    </Link>}
  
-    {role !=="superviseur" && <Link href="/users" onClick={()=>setCurrentPage(2)}>
+    {role ===1  && <Link href="/users" onClick={()=>setCurrentPage(2)}>
  <div 
  className=
  {`flex cursor-pointer ${currentPage === 2 ? "bg-[#57482959] py-2 px-4 rounded-sm" : "" } 
@@ -110,7 +121,7 @@ export default function Sidebar() {
   </div>
  </Link>
  
- {role==="superviseur"  &&   <Link href="/campaign" onClick={()=>setCurrentPage(5)}>
+ {role===null  &&   <Link href="/campaign" onClick={()=>setCurrentPage(5)}>
  <div className=
  {`flex cursor-pointer ${currentPage === 5 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
  items-center gap-2`} >
@@ -136,7 +147,7 @@ export default function Sidebar() {
   </div>
   </Link>
   
-  {role !=="superviseur" && <Link href="/settings" onClick={()=>setCurrentPage(7)}>
+  {role ===1 && <Link href="/settings" onClick={()=>setCurrentPage(7)}>
   <div className={`flex cursor-pointer ${currentPage === 7 ? "bg-[#57482959] py-2 rounded-sm" : "" } 
  items-center gap-2`}>
       <div>
@@ -153,10 +164,10 @@ export default function Sidebar() {
         <div>
         <LogOut className='w-5 h-5 text-gray-500'/>
         </div>
-        {role ==="superviseur"  && <div  onClick={logoutSupervisor}>
+        {role ===null  && <div  onClick={logoutSupervisor}>
             <h2 className='text-gray-500'>Deconnexion</h2>
         </div>}
-        {role !=="superviseur"  && <div  onClick={logout}>
+        {role ===1  && <div  onClick={logout}>
             <h2 className='text-gray-500'>Deconnexion</h2>
         </div>}
     </div>
